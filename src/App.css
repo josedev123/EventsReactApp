@@ -1,22 +1,14 @@
-.App {
-  text-align: center;
+.main-wrap{
+/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#4d21a5+0,2e5dba+84,3386ce+100 */
+background: #4d21a5; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #4d21a5 0%, #2e5dba 84%, #3386ce 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg,  #4d21a5 0%,#2e5dba 84%,#3386ce 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg,  #4d21a5 0%,#2e5dba 84%,#3386ce 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d21a5', endColorstr='#3386ce',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+background-size:cover;
+min-height:100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
+.ct-box{
+  background: #fff;border-radius: 10px;margin: 5px;padding:15px;box-shadow: rgba(0,0,0,0.2);
 }
