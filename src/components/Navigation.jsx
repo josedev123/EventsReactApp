@@ -12,6 +12,9 @@ export class Navigation extends Component {
                     <li>
                         <Link to="/events">Events</Link>
                     </li>
+                    <li>
+                        <Link to="/locations">Locations</Link>
+                    </li>
                 </ul>
             </div>
         )

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 import { Formik, Field } from 'formik';
-import Moment from 'react-moment';
 
 const apiEndPoint = "https://localhost:44317/events";
 const apiEndPointLoc = "https://localhost:44317/locations";
@@ -24,6 +24,12 @@ export class EventEdit extends Component {
         },
         locations : []
     };
+
+    deleteItem = () => {
+        axios.post(apiEndPoint + "/delete/" + this.eventId).then( () => {
+            this.props.history.push('/events/');
+        });
+    }
 
     async componentDidMount() {
         const { data } = await axios.get(apiEndPoint + "/edit/" + this.eventId);
@@ -132,9 +138,16 @@ export class EventEdit extends Component {
 
                     </div>
 
-                  <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+                    <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
                     Submit
                   </button>
+                  <button type="button" className="btn btn-danger" onClick={e =>
+        window.confirm("Are you sure you wish to delete this item?") &&
+        this.deleteItem(e)
+    }>
+                    Delete
+                  </button>
+                  <Link className="btn btn-primary" to="/events">Back to Events</Link>
                 </form>
               )}
             </Formik>

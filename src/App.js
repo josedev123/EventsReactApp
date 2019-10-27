@@ -4,6 +4,7 @@ import Events from './components/Events';
 import EventDetails from './components/EventDetails';
 import EventEdit from './components/EventEdit';
 import EventForm from './components/EventForm';
+import Locations from './components/Locations';
 import Home from './components/Home';
 import Navigation from './components/Navigation';
 import NotFound from './components/NotFound';
@@ -28,6 +29,7 @@ class App extends Component{
           <Route path="/events/edit/:id" component={EventEdit}/>
           <Route path="/events/details/:id" component={EventDetails}/>
           <Route path="/events" component={Events}/>
+          <Route path="/locations" component={Locations}/>
           <Route path="/not-found" component={NotFound} />
           <Route path="/" exact component={Home}/>
           <Redirect to="/not-found" />
