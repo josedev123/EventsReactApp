@@ -39,7 +39,7 @@ class Events extends Component {
                                     {event.date}
                                 </Moment>                          
                             </td>
-                           <td>Edit</td>
+                           <td><Link to={`/events/edit/${event.id}`}>Edit</Link></td>
                        </tr>
                    ))}                     
                    </tbody>

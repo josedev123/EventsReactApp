@@ -2,12 +2,21 @@ import React, { Component } from 'react';
 import { Formik, Field } from 'formik';
 import axios from 'axios';
 
+const apiEndPointLoc = "https://localhost:44317/locations";
 const apiEndPoint = "https://localhost:44317/events/create";
 
 export class EventForm extends Component {
     state = {
         data: { name: "", description: "", date: "", free: false, locationId: "" },
+        locations: []
     };
+
+    async componentDidMount() {
+
+      const { data:locations } = await axios.get(apiEndPointLoc);
+      this.setState({ locations });
+
+  }
 
     render() {
         return (
@@ -78,10 +87,13 @@ export class EventForm extends Component {
                     
 
                     <div className="form-check">
-                        <input className="form-check-input" type="checkbox" name="free" onChange={handleChange}
+                    <label className="form-check-label">
+                        <input className="form-check-input" 
+                        type="checkbox" 
+                        name="free" 
+                        onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.free} />
-                        <label className="form-check-label" htmlFor="defaultCheck1">
                           Free
                         </label>
                     </div>
@@ -93,9 +105,10 @@ export class EventForm extends Component {
                               onChange={handleChange}
                               onBlur={handleBlur}>
                           <option>Select</option>
-                          <option value="1">Location One</option>
-                          <option value="2">Location Two</option>
-                          <option value="3">Location Three</option>
+                          {this.state.locations.map(location => (
+                                <option key={location.id} value={location.id}>{location.name}
+                                </option>
+                          ))}
                         </Field>
                         {errors.locationId && touched.locationId && errors.locationId}
 
