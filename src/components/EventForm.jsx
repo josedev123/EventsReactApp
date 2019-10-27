@@ -6,14 +6,14 @@ const apiEndPoint = "https://localhost:44317/events/create";
 
 export class EventForm extends Component {
     state = {
-        data: { name: "", description: "", date: "" },
+        data: { name: "", description: "", date: "", free: false, locationId: "" },
     };
 
     render() {
         return (
           <div>
             <Formik
-              initialValues={{ name: "", description: "", date: "", free: false, locationId: "" }}
+              initialValues={this.state.data}
               validate={values => {
                 let errors = {};
                 if (!values.name) {
@@ -25,10 +25,13 @@ export class EventForm extends Component {
                 return errors;
               }}
               onSubmit={ (values, { setSubmitting }) => {
-                axios.post(apiEndPoint, values).then(res => {
+                axios.post(apiEndPoint, values).then(response => {
                   setSubmitting(false);
-                  this.props.history.push('/events/details/'+ (res.data.id));
-                });
+                  this.props.history.push('/events/details/'+ (response.data.id));
+                })
+                .catch(error => {
+                  console.log(error.response);
+              });;
             }}
             >
               {({

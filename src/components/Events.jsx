@@ -33,10 +33,10 @@ class Events extends Component {
                    <tbody>
                    {this.state.events.map(event => (
                     <tr key={event.id}>
-                           <td>{event.name}</td>
+                           <td><Link to={`/events/details/${event.id}`}>{event.name}</Link></td>
                             <td>
                                 <Moment format="YYYY/MM/DD">
-                                    1976-04-19T12:59-0500
+                                    {event.date}
                                 </Moment>                          
                             </td>
                            <td>Edit</td>
