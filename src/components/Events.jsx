@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import axios from 'axios';
 import Moment from 'react-moment';
 import 'moment-timezone';
@@ -14,23 +15,13 @@ class Events extends Component {
         const { data:events } = await axios.get(apiEndPoint);
         this.setState({ events });
       }
-
-      handleAdd = async () => {
-          const object = { 
-          "name": "Language Class",
-          "locationId": 1,
-          "description" : "Language class description",
-          "free" : false };
-          const { data: event } = await axios.post(apiEndPoint + '/create', object);
-          console.log(event);
-      }
     
     render() {
         return (
             <div>
-                <button className="btn btn-primary mb-3" onClick={this.handleAdd}>
+                <Link to="/events/add" className="btn btn-primary mb-3">
                      Add
-                </button>
+                </Link>
                <table className="table">
                    <thead>
                        <tr>
